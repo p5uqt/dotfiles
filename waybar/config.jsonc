@@ -1,0 +1,138 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 46,
+  "spacing": 1,
+
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+
+  "modules-center": [
+   "clock",
+   "tray"
+  ],
+
+  "modules-right": [
+    "cpu",
+    "memory",
+    "temperature",
+    "backlight",
+    "pulseaudio",
+    "network",
+    "battery",
+    "power-profiles-daemon",
+    "hyprland/language"
+  ],
+
+
+"hyprland/window": {
+"rewrite": {"^$": "  Desktop"},
+  "icon": true,
+  "icon-size": 18,
+  "format": "{title}",
+  "max-length": 55,
+  "ellipsis": "…",
+  "tooltip": false,
+  "format-alt": "{class}"
+},
+
+  "cpu": {
+    "interval": 5,
+    "format": "󰻠 {usage}%"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "󰍛 {}%"
+  },
+
+  "temperature": {
+  "states": { "low": 40, "medium": 70, "high": 99 },
+    "interval": 1,
+    "format": "󰔏 {temperatureC}°C",
+    "on-click": "coolerboost",
+    "tooltip": false
+  },
+
+  "backlight": {
+    "format": "󰃟 {percent}%",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "format-bluetooth": " {volume}%",
+    "format-bluetooth-muted": " muted",
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 muted",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    }
+  },
+
+  "network": {
+    "format-wifi": "󰖩 {essid} {signalStrength}%",
+    "format-ethernet": "󰈀 Ethernet",
+    "format-disconnected": "󰖪 Offline",
+    "tooltip": false,
+    "format-alt": "{ifname}: {ipaddr}/{cidr} {signalStrength}%",
+    "format-alt-click": "click-right",
+    "on-click": "airctl"
+},
+
+  "battery": {
+    "states": {"warning": 30, "critical": 15},
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%",
+    "format-icons": ["󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"],
+    "tooltip": false
+  },
+
+  "hyprland/language": {
+    "format": "{}",  
+    "format-en": "EN",
+    "format-ru": "RU",
+    "format-uk": "UA"
+  },
+
+
+  "clock": {
+    "on-click": "swaync-client -t",
+    "interval": 1,
+    "format": "{:%A %d %B  %H:%M:%S}",
+    "tooltip-format": "{:%d.%m %Y}"
+  },
+
+"power-profiles-daemon": {
+  "format": "{icon}",
+  "tooltip-format": "{profile}",
+  "tooltip": true,
+  "format-icons": {
+    "default": "",
+    "performance": "",
+    "balanced": " ",
+    "power-saver": " "
+  }
+},
+
+"hyprland/workspaces": {
+    "persistent-workspaces": {
+             "*": 5
+       }
+},
+
+
+ "tray": {
+    "icon-size": 17,
+    "spacing": 10,
+    "show-passive-items": true
+  }
+}
+
+
+
+
+}

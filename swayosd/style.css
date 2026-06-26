@@ -1,0 +1,30 @@
+window {
+    background: rgba(30, 30, 46, 0.95);
+    border-radius: 999px;
+    padding: 10px;
+    border: 2px solid rgba(77, 171, 238, 0.3);
+}
+
+box {
+    padding: 6px;
+color: #e6e6e6;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+progressbar {
+    min-height: 6px;
+}
+
+progressbar trough {
+    background: #3a3a3a;
+    border-radius: 999px;
+}
+
+progressbar progress {
+    border-radius: 999px;
+    background: #e6e6e6;
+}

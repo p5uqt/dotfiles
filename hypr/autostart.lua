@@ -1,0 +1,15 @@
+-------------------
+---- AUTOSTART ----
+-------------------
+
+hl.on("hyprland.start", function ()
+   hl.exec_cmd("waybar")
+   hl.exec_cmd("swaync")
+   hl.exec_cmd ("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+   hl.exec_cmd("awww-daemon")
+   hl.exec_cmd("swayosd-server")
+   hl.exec_cmd("sleep 1 && /home/msi/.local/bin/wallpaper")
+   hl.exec_cmd("wl-clip-persist --clipboard regular")
+   hl.exec_cmd("eww open activate-linux")
+   hl.exec_cmd("udiskie -f nautilus")
+end)

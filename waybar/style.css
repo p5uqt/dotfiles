@@ -1,0 +1,120 @@
+/* BLINKING ANIMATION */
+
+@keyframes blink {
+  0% {
+    background-color: @background;
+    color: #e6e6e6;
+  }
+  50% {
+    background-color: #ff3b3b;
+    color: #ffffff;
+  }
+  100% {
+    background-color: @background;
+    color: #e6e6e6;
+  }
+}
+
+/* MY COLORS */
+
+@define-color background  rgba(30, 30, 46, 0.88);
+@define-color border rgba(77, 171, 238, 0.3);
+
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+}
+
+window#waybar {
+  background: transparent;
+  color: #e6e6e6;
+}
+
+/* WORKSPACES */
+#workspaces {
+  margin: 6px 0 6px 10px;
+  padding: 0 6px;
+  border-radius: 14px;
+  background: @background;
+  margin-right: 20px;
+  margin-left: 14px;
+  border: 1.3px solid @border;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  margin: 4px 3px;
+  border-radius: 10px;
+  color: #888;
+  background: transparent;
+  transition: 0.2s;
+}
+
+/* ACTIVE WORKSPACE */
+#workspaces button.active {
+  background: #3b82f6;  
+  color: white;
+}
+
+/* NOT ACTIVE NOT EMPTY */
+#workspaces button:not(.active):not(.empty) {
+    background: rgba(136, 192, 208, 0.14);
+}
+
+/* CLICK FEEDBACK */
+#workspaces button:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+/* WINDOW */
+#window {
+  background: @background;
+  padding: 0 16px;
+  margin: 6px 0;
+  border-radius: 14px;
+  border: 1.3px solid @border;
+}
+
+#window label {
+  font-size: 13.4px;
+}
+
+/* MODULES */
+#cpu,#memory,#temperature,#backlight,#pulseaudio,#network,#battery,#language,#tray,#power-profiles-daemon {
+  background: @background;
+  margin: 6px 2px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1.3px solid @border;
+}
+
+#language {margin-right: 14px;}
+
+#clock {
+background: @background;
+  font-size: 14px;
+  margin: 6px 3px;
+  padding: 0 14px;
+  border-radius: 14px;
+  border: 1.3px solid @border;
+}
+
+/* BATTERY STATES */
+#battery.charging { color: #22c55e; }
+#battery.warning { color: #facc15; }
+#battery.critical { animation: blink 1s infinite; }
+
+#pulseaudio.muted { color: #888; }
+
+
+tooltip {
+    background: rgba(30, 34, 42, 1);
+    border-radius: 12px;
+    padding: 12px;
+    border: 1.3px solid @border;
+    color: white;
+    font-size: 14px;
+}
