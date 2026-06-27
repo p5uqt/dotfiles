@@ -17,12 +17,12 @@ set templates \
 # 3. Случайно выбираем один из этих шести шаблонов
 set final_color (shuf -n 1 -e $templates)
 
-echo "all steady 000000" >> keyboard.txt
-echo "65 steady $final_color" >> keyboard.txt
+echo "all steady 000000" >> keyboard
+echo "65 steady $final_color" >> keyboard
 
 # 4. Применяем цвет к клавиатуре
-msi-perkeyrgb -m GS65 -c keyboard.txt
-rm -rf keyboard.txt
+msi-perkeyrgb -m GS65 -c keyboard
+rm -rf keyboard
 
 # Выводим красивый лог в терминал
 echo "#$final_color"
