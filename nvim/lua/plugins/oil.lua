@@ -4,8 +4,8 @@ return {
   opts = {
     default_file_explorer = true,
   },
-  cmd = "Oil",
+  lazy = false,
   keys = {
-    { "-", "<cmd>Oil<CR>" },
+    { "-", "<cmd>Oil<CR>", desc = "Open parent directory" },
   },
 }

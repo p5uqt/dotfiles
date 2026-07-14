@@ -1,3 +1,7 @@
+-- отключаем netrw (используем oil)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- базовая совместимость
 vim.opt.compatible = false
  
