@@ -14,3 +14,6 @@ alias drag 'ripdrag -s 40 -n'
 set -gx tide_character_vi_icon_default "❯"
 
 end
+
+# Added by LM Studio CLI tool (lms)
+set -gx PATH $PATH /home/msi/.lmstudio/bin
