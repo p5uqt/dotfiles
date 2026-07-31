@@ -15,8 +15,8 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("wofi --show drun --allow-images --no
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind("XF86PowerOff", hl.dsp.exec_cmd("hyprlock -q & sleep 1 && systemctl suspend"))
+hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("pidoff || hyprlock"))
+hl.bind("XF86PowerOff", hl.dsp.exec_cmd("pidof || hyprlock -q & sleep 1 && systemctl suspend"))
 hl.bind(mainMod .. " + XF86PowerOff", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind("switch:on:Lid Switch", hl.dsp.exec_cmd("hyprlock -q & sleep 1 && systemctl suspend"), { locked = true })
 hl.bind(mainMod .. " + GRAVE", hl.dsp.exec_cmd("~/.local/bin/keyboard"))
