@@ -13,6 +13,9 @@ alias v nvim
 alias drag 'ripdrag -s 40 -n'
 alias glow 'glow -t'
 alias tree 'eza --tree'
+alias e 'zk edit --interactive'
+alias l 'zk list'
+alias n 'zk new'
 set -gx tide_character_vi_icon_default "❯"
 
 end
