@@ -12,6 +12,7 @@ alias cd.. "cd .."
 alias v nvim
 alias drag 'ripdrag -s 40 -n'
 alias glow 'glow -t'
+alias tree 'eza --tree'
 set -gx tide_character_vi_icon_default "❯"
 
 end
