@@ -1,0 +1,397 @@
+# ==========================================================
+#  Hyprlock — Catppuccin Mocha «Aurora»
+#  Glass chips, gradient accents, glowing clock
+# ==========================================================
+#
+#  Palette
+#  ───────
+#  rosewater   #f5e0dc   lavender    #b4befe
+#  flamingo    #f2cdcd   blue        #89b4fa
+#  pink        #f5c2e7   sapphire    #74c7ec
+#  mauve       #cba6f7   sky         #89dceb
+#  red         #f38ba8   teal        #94e2d5
+#  maroon      #eba0ac   green       #a6e3a1
+#  peach       #fab387   yellow      #f9e2af
+#  text        #cdd6f4   subtext1    #bac2de
+#  subtext0    #a6adc8   overlay2    #9399b2
+#  overlay1    #7f849c   overlay0    #6c7086
+#  surface2    #585b70   surface1    #45475a
+#  surface0    #313244   base        #1e1e2e
+#  mantle      #181825   crust       #11111b
+#
+#  Fonts: JetBrainsMono Nerd Font (glyphs verified in font)
+# ==========================================================
+
+
+# ==========================================================
+# BACKGROUND — blurred screenshot, cooled down
+# ==========================================================
+
+background {
+    monitor =
+    path = screenshot
+
+    blur_passes = 3
+    blur_size = 7
+    noise = 0.0117
+
+    contrast = 1.06
+    brightness = 0.52
+    vibrancy = 0.20
+    vibrancy_darkness = 0.28
+}
+
+
+# ==========================================================
+# GENERAL
+# ==========================================================
+
+general {
+    text_trim = true
+    hide_cursor = false
+    ignore_empty_input = false
+    immediate_render = false
+    fail_timeout = 2000
+}
+
+
+# ==========================================================
+# ANIMATIONS — soft, dreamy
+# ==========================================================
+
+bezier = aurora, 0.05, 0.9, 0.1, 1.05
+
+animation = fadeIn,   1, 1.6, aurora
+animation = fadeOut,  1, 1.2, aurora
+
+animation = inputFieldColors, 1, 1, aurora
+animation = inputFieldFade,   1, 1, aurora
+animation = inputFieldWidth,  1, 1, aurora
+animation = inputFieldDots,   1, 1, aurora
+
+
+# ==========================================================
+# AMBIENT TINT — a whisper of catppuccin base over the shot
+# ==========================================================
+
+shape {
+    monitor =
+    size = 1920, 1080
+    position = 0, 0
+    halign = center
+    valign = center
+    color = rgba(30, 30, 46, 0.34)
+    rounding = 0
+    zindex = 1
+}
+
+
+# ==========================================================
+# CENTER CARD — frosted glass with a gradient halo
+# ==========================================================
+
+shape {
+    monitor =
+    size = 640, 620
+    position = 0, -10
+    halign = center
+    valign = center
+
+    color = rgba(24, 24, 37, 0.46)
+    rounding = 42
+
+    border_size = 2
+    border_color = rgba(203, 166, 247, 0.55) rgba(245, 194, 231, 0.25) rgba(137, 180, 250, 0.50) 135deg
+
+    shadow_passes = 3
+    shadow_size = 18
+    shadow_color = rgba(17, 17, 27, 0.60)
+    shadow_boost = 1.4
+
+    zindex = 10
+}
+
+
+# ==========================================================
+# GREETING — catppuccin cat, time aware
+# ==========================================================
+
+label {
+    monitor =
+    text = cmd[update:60000] sh -c 'h=$(date +%-H); if [ "$h" -lt 5 ]; then g="Good night"; elif [ "$h" -lt 12 ]; then g="Good morning"; elif [ "$h" -lt 18 ]; then g="Good afternoon"; else g="Good evening"; fi; echo "󰄛  $g, $USER"'
+
+    color = rgba(245, 194, 231, 0.95)
+    font_size = 18
+    font_family = JetBrainsMono NF
+
+    position = 0, -270
+    halign = center
+    valign = center
+
+    zindex = 20
+}
+
+
+# ==========================================================
+# CLOCK — glowing heart of the lockscreen
+# ==========================================================
+
+label {
+    monitor =
+    text = cmd[update:1000] echo "$(date '+%H:%M')"
+
+    color = rgba(205, 214, 244, 0.98)
+    font_size = 126
+    font_family = JetBrainsMono NF ExtraBold
+
+    shadow_passes = 3
+    shadow_size = 14
+    shadow_color = rgba(180, 190, 254, 0.40)
+    shadow_boost = 1.3
+
+    position = 0, -168
+    halign = center
+    valign = center
+
+    zindex = 20
+}
+
+
+# ==========================================================
+# DATE
+# ==========================================================
+
+label {
+    monitor =
+    text = cmd[update:60000] echo "$(date '+%A, %d %B')"
+
+    color = rgba(186, 194, 222, 0.95)
+    font_size = 21
+    font_family = JetBrainsMono NF
+
+    position = 0, -80
+    halign = center
+    valign = center
+
+    zindex = 20
+}
+
+
+# ==========================================================
+# DIVIDER — thin gradient thread under the date
+# ==========================================================
+
+shape {
+    monitor =
+    size = 280, 2
+    position = 0, -52
+    halign = center
+    valign = center
+
+    color = rgba(0, 0, 0, 0)
+    rounding = 1
+
+    border_size = 1
+    border_color = rgba(203, 166, 247, 1) rgba(245, 194, 231, 1) rgba(137, 180, 250, 1) 0deg
+
+    zindex = 10
+}
+
+
+# ==========================================================
+# PASSWORD — glass pill, gradient border, soft dots
+# ==========================================================
+
+input-field {
+    monitor =
+
+    size = 320, 58
+    outline_thickness = 2
+
+    outer_color = rgba(203, 166, 247, 0.90) rgba(137, 180, 250, 0.70) 135deg
+    inner_color = rgba(17, 17, 27, 0.60)
+
+    font_color = rgba(205, 214, 244, 0.95)
+    font_family = JetBrainsMono NF
+    placeholder_text = <span foreground="#7f849c"><i>Password</i></span>
+
+    dots_size = 0.22
+    dots_spacing = 0.35
+    dots_center = true
+    dots_rounding = -1
+
+    check_color = rgba(166, 227, 161, 0.90) rgba(148, 226, 213, 0.90) 180deg
+    fail_color  = rgba(243, 139, 168, 0.90) rgba(235, 160, 172, 0.90) 180deg
+    capslock_color = rgba(249, 226, 175, 1)
+
+    fade_on_empty = true
+    fade_timeout = 2000
+
+    rounding = 29
+    swap_font_color = true
+
+    shadow_passes = 2
+    shadow_size = 8
+    shadow_color = rgba(17, 17, 27, 0.50)
+
+    position = 0, 14
+    halign = center
+    valign = center
+
+    zindex = 25
+}
+
+
+# ==========================================================
+# LAYOUT HINT
+# ==========================================================
+
+label {
+    monitor =
+    text = $LAYOUT[EN,RU]
+
+    color = rgba(127, 132, 156, 0.85)
+    font_size = 13
+    font_family = JetBrainsMono NF
+
+    position = 0, 58
+    halign = center
+    valign = center
+
+    zindex = 20
+}
+
+
+# ==========================================================
+# TOP LEFT — user card: hostname + session
+# ==========================================================
+
+shape {
+    monitor =
+    size = 360, 56
+    position = 28, 22
+    halign = left
+    valign = top
+
+    color = rgba(30, 30, 46, 0.60)
+    rounding = 28
+
+    border_size = 1
+    border_color = rgba(180, 190, 254, 0.80) rgba(203, 166, 247, 0.40) 90deg
+
+    shadow_passes = 2
+    shadow_size = 6
+    shadow_color = rgba(17, 17, 27, 0.50)
+
+    zindex = 10
+}
+
+label {
+    monitor =
+    text = cmd[update:60000] echo "󰌢  $(hostname)"
+
+    color = rgba(180, 190, 254, 0.98)
+    font_size = 16
+    font_family = JetBrainsMono NF Bold
+
+    position = 54, 30
+    halign = left
+    valign = top
+
+    zindex = 20
+}
+
+label {
+    monitor =
+    text = cmd[update:60000] echo "󰀻  ${XDG_CURRENT_DESKTOP:-$XDG_SESSION_DESKTOP}"
+
+    color = rgba(147, 153, 178, 0.95)
+    font_size = 12
+    font_family = JetBrainsMono NF
+
+    position = 54, 52
+    halign = left
+    valign = top
+
+    zindex = 20
+}
+
+
+# ==========================================================
+# TOP RIGHT — network chip
+# ==========================================================
+
+shape {
+    monitor =
+    size = 360, 48
+    position = -28, 22
+    halign = right
+    valign = top
+
+    color = rgba(30, 30, 46, 0.60)
+    rounding = 24
+
+    border_size = 1
+    border_color = rgba(137, 180, 250, 0.80) rgba(116, 199, 236, 0.40) 90deg
+
+    shadow_passes = 2
+    shadow_size = 6
+    shadow_color = rgba(17, 17, 27, 0.50)
+
+    zindex = 10
+}
+
+label {
+    monitor =
+    text = cmd[update:5000] sh -c 'iface="$(ip route | awk "/^default/ {print \$5; exit}")"; if [ -z "$iface" ]; then echo "󰖪  Offline"; exit 0; fi; if [ -d "/sys/class/net/$iface/wireless" ]; then ssid="$(nmcli -t -f active,ssid dev wifi 2>/dev/null | awk -F: "\$1==\"yes\" {print \$2; exit}")"; if [ -n "$ssid" ]; then echo "󰖩  $ssid"; else echo "󰖩  Wi-Fi"; fi; else echo "󰘉  Ethernet"; fi'
+
+    color = rgba(137, 180, 250, 0.98)
+    font_size = 14
+    font_family = JetBrainsMono NF SemiBold
+
+    position = -52, 38
+    halign = right
+    valign = top
+
+    zindex = 20
+}
+
+
+# ==========================================================
+# TOP RIGHT — battery chip
+# ==========================================================
+
+shape {
+    monitor =
+    size = 170, 48
+    position = -28, 82
+    halign = right
+    valign = top
+
+    color = rgba(30, 30, 46, 0.60)
+    rounding = 24
+
+    border_size = 1
+    border_color = rgba(166, 227, 161, 0.80) rgba(148, 226, 213, 0.40) 90deg
+
+    shadow_passes = 2
+    shadow_size = 6
+    shadow_color = rgba(17, 17, 27, 0.50)
+
+    zindex = 10
+}
+
+label {
+    monitor =
+    text = cmd[update:5000] sh -c 'b="/sys/class/power_supply/BAT1"; if [ ! -d "$b" ]; then echo "󰁹  N/A"; exit 0; fi; cap="$(cat "$b/capacity" 2>/dev/null)"; st="$(cat "$b/status" 2>/dev/null)"; if [ -z "$cap" ]; then echo "󰁹  N/A"; exit 0; fi; if [ "$st" = "Charging" ] || [ "$st" = "Full" ]; then echo "󰂄  $cap%"; exit 0; fi; if [ "$cap" -ge 95 ]; then ic="󰁹"; elif [ "$cap" -ge 90 ]; then ic="󰂂"; elif [ "$cap" -ge 80 ]; then ic="󰂁"; elif [ "$cap" -ge 70 ]; then ic="󰂀"; elif [ "$cap" -ge 60 ]; then ic="󰁿"; elif [ "$cap" -ge 50 ]; then ic="󰁾"; elif [ "$cap" -ge 40 ]; then ic="󰁽"; elif [ "$cap" -ge 30 ]; then ic="󰁼"; elif [ "$cap" -ge 20 ]; then ic="󰁻"; elif [ "$cap" -ge 10 ]; then ic="󰁺"; else ic="󰂃"; fi; echo "$ic  $cap%"'
+
+    color = rgba(166, 227, 161, 0.98)
+    font_size = 14
+    font_family = JetBrainsMono NF SemiBold
+
+    position = -52, 98
+    halign = right
+    valign = top
+
+    zindex = 20
+}

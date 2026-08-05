@@ -1,0 +1,302 @@
+
+```conf
+# ==========================================================
+# Hyprlock — Catppuccin Mocha
+# Clean balanced layout
+# ==========================================================
+
+
+# ==========================================================
+# BACKGROUND
+# ==========================================================
+
+background {
+    monitor =
+    path = screenshot
+
+    blur_passes = 3
+    blur_size = 4
+
+    contrast = 1.0
+    brightness = 0.55
+    vibrancy = 0.18
+    vibrancy_darkness = 0.25
+}
+
+
+# ==========================================================
+# GENERAL
+# ==========================================================
+
+general {
+    no_fade_in = false
+    fade_in_duration = 0.3
+
+    no_fade_out = false
+    fade_out_duration = 0.2
+
+    hide_cursor = false
+    grace = 0
+
+    disable_loading_bar = true
+}
+
+
+# ==========================================================
+# TIME
+# ==========================================================
+
+label {
+    monitor =
+
+    text = cmd[update:1000] echo "$(date '+%H:%M')"
+
+    color = rgba(205, 214, 244, 0.98)
+
+    font_size = 92
+    font_family = JetBrains Mono ExtraBold
+
+    shadow_passes = 3
+    shadow_size = 8
+    shadow_color = rgba(17, 17, 27, 0.6)
+
+    # Upper-middle
+    position = 0, -165
+
+    halign = center
+    valign = center
+}
+
+
+# ==========================================================
+# DATE
+# ==========================================================
+
+label {
+    monitor =
+
+    text = cmd[update:60000] echo "$(date '+%A, %d %B')"
+
+    color = rgba(186, 194, 222, 0.90)
+
+    font_size = 21
+    font_family = JetBrains Mono
+
+    position = 0, -80
+
+    halign = center
+    valign = center
+}
+
+
+# ==========================================================
+# USER / GREETING
+# ==========================================================
+
+label {
+    monitor =
+
+    text = cmd[update:3600000] echo "Welcome back, $USER"
+
+    color = rgba(203, 166, 247, 0.88)
+
+    font_size = 17
+    font_family = JetBrains Mono
+
+    position = 0, -42
+
+    halign = center
+    valign = center
+}
+
+
+# ==========================================================
+# PASSWORD
+# ==========================================================
+
+input-field {
+    monitor =
+
+    # Compact pill
+    size = 270, 52
+
+    outline_thickness = 2
+
+    dots_size = 0.20
+    dots_spacing = 0.34
+    dots_center = true
+
+    # Catppuccin Crust
+    inner_color = rgba(17, 17, 27, 0.82)
+
+    # Catppuccin Mauve
+    outer_color = rgba(203, 166, 247, 0.52)
+
+    font_color = rgb(205, 214, 244)
+
+    fade_on_empty = false
+
+    # Full pill
+    rounding = 26
+
+    check_color = rgb(166, 227, 161)
+    fail_color = rgb(243, 139, 168)
+
+    placeholder_text = Password
+    hide_input = false
+
+    shadow_passes = 2
+    shadow_size = 6
+    shadow_color = rgba(0, 0, 0, 0.35)
+
+    position = 0, 20
+
+    halign = center
+    valign = center
+}
+
+
+# ==========================================================
+# KEYBOARD LAYOUT
+# ==========================================================
+
+label {
+    monitor =
+
+    text = $LAYOUT[EN,RU]
+
+    color = rgba(166, 173, 200, 0.70)
+
+    font_size = 13
+    font_family = JetBrains Mono Nerd Font
+
+    position = 0, 62
+
+    halign = center
+    valign = center
+}
+
+
+# ==========================================================
+# BATTERY
+# ==========================================================
+
+label {
+    monitor =
+
+    text = cmd[update:5000] sh -c '
+        bat="/sys/class/power_supply/BAT1"
+
+        if [ ! -d "$bat" ]; then
+            echo "BAT  N/A"
+            exit 0
+        fi
+
+        cap="$(cat "$bat/capacity" 2>/dev/null)"
+        status="$(cat "$bat/status" 2>/dev/null)"
+
+        if [ -z "$cap" ]; then
+            echo "BAT  N/A"
+            exit 0
+        fi
+
+        if [ "$status" = "Charging" ]; then
+            echo "󰂄  $cap%"
+        elif [ "$cap" -le 10 ]; then
+            echo "󰂃  $cap%"
+        elif [ "$cap" -le 25 ]; then
+            echo "󰁺  $cap%"
+        elif [ "$cap" -le 50 ]; then
+            echo "󰁼  $cap%"
+        elif [ "$cap" -le 75 ]; then
+            echo "󰁾  $cap%"
+        else
+            echo "󰁹  $cap%"
+        fi
+    '
+
+    # Catppuccin Green
+    color = rgb(166, 227, 161)
+
+    font_size = 19
+    font_family = JetBrains Mono Nerd Font
+
+    shadow_passes = 1
+    shadow_size = 3
+    shadow_color = rgba(17, 17, 27, 0.5)
+
+    position = -35, 32
+
+    halign = right
+    valign = top
+}
+
+
+# ==========================================================
+# WIFI
+# ==========================================================
+
+label {
+    monitor =
+
+    text = cmd[update:5000] sh -c '
+        iface="$(ip route | awk "/^default/ {print \$5; exit}")"
+
+        if [ -z "$iface" ]; then
+            echo "󰌙  Offline"
+            exit 0
+        fi
+
+        if [ -d "/sys/class/net/$iface/wireless" ]; then
+            ssid="$(nmcli -t -f active,ssid dev wifi 2>/dev/null \
+                | awk -F: "$1==\"yes\" {print \$2; exit}")"
+
+            if [ -n "$ssid" ]; then
+                echo "󰤨  $ssid"
+            else
+                echo "󰤨  Wi-Fi"
+            fi
+        else
+            echo "󰈀  Ethernet"
+        fi
+    '
+
+    # Catppuccin Blue
+    color = rgb(137, 180, 250)
+
+    font_size = 17
+    font_family = JetBrains Mono Nerd Font
+
+    shadow_passes = 1
+    shadow_size = 3
+    shadow_color = rgba(17, 17, 27, 0.5)
+
+    # Exactly under battery
+    position = -35, 67
+
+    halign = right
+    valign = top
+}
+
+
+# ==========================================================
+# HOST / SESSION
+# ==========================================================
+
+label {
+    monitor =
+
+    text = cmd[update:5000] echo "$(hostname)  ·  ${XDG_CURRENT_DESKTOP:-$XDG_SESSION_DESKTOP}"
+
+    # Catppuccin Overlay1
+    color = rgba(127, 132, 156, 0.75)
+
+    font_size = 13
+    font_family = JetBrains Mono
+
+    position = 0, 26
+
+    halign = center
+    valign = bottom
+}
+```
