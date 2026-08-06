@@ -16,6 +16,13 @@ alias tree 'eza --tree'
 alias e 'zk edit --interactive'
 alias l 'zk list'
 alias n 'zk new'
+alias ss 'grc ss'
+alias journalctl 'grc journalctl'
+alias lsblk 'grc lsblk'
+alias free 'grc free'
+
+
+
 set -gx tide_character_vi_icon_default "❯"
 
 end
