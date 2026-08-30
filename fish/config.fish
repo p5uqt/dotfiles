@@ -30,3 +30,6 @@ end
 
 # Added by LM Studio CLI tool (lms)
 set -gx PATH $PATH /home/msi/.lmstudio/bin
+
+# strix
+fish_add_path /home/msi/.strix/bin
