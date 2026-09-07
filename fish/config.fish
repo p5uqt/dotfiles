@@ -33,3 +33,6 @@ set -gx PATH $PATH /home/msi/.lmstudio/bin
 
 # strix
 fish_add_path /home/msi/.strix/bin
+
+# OpenClaw Completion
+test -f "/home/msi/.openclaw/completions/openclaw.fish"; and source "/home/msi/.openclaw/completions/openclaw.fish"

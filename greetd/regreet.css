@@ -1,0 +1,132 @@
+window {
+    background: none;
+}
+
+/* ---------- Clock ---------- */
+#clock_frame {
+    background-color: rgba(30, 30, 46, 0.55);
+    border-radius: 0 0 18px 18px;
+    border: none;
+    box-shadow: none;
+    padding: 8px 22px 10px 22px;
+    margin: 0;
+}
+#clock_frame label {
+    color: #cdd6f4;
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* ---------- Login card ---------- */
+frame.background {
+    background-color: rgba(30, 30, 46, 0.82);
+    border-radius: 20px;
+    border: 1px solid rgba(205, 214, 244, 0.12);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+    padding: 20px 24px;
+}
+
+#message_label {
+    color: #cdd6f4;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+#input_label {
+    color: #b4befe;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+label {
+    color: #a6adc8;
+}
+
+/* ---------- Inputs ---------- */
+entry {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(205, 214, 244, 0.15);
+    border-radius: 10px;
+    padding: 9px 12px;
+    min-height: 38px;
+    color: #cdd6f4;
+    box-shadow: none;
+    caret-color: #89b4fa;
+}
+entry:focus-within {
+    border-color: #89b4fa;
+    background-color: rgba(255, 255, 255, 0.10);
+}
+entry selection {
+    background-color: #89b4fa;
+    color: #1e1e2e;
+}
+
+combobox button {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(205, 214, 244, 0.15);
+    border-radius: 10px;
+    padding: 8px 10px;
+    min-height: 36px;
+    color: #cdd6f4;
+    box-shadow: none;
+}
+combobox button:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- Buttons ---------- */
+button {
+    border-radius: 12px;
+    padding: 0 14px;
+    min-height: 36px;
+    font-weight: 600;
+    box-shadow: none;
+    background-color: #313244;
+    border: 1px solid rgba(205, 214, 244, 0.12);
+    color: #cdd6f4;
+}
+button:hover {
+    background-color: #45475a;
+}
+button:active {
+    background-color: #585b70;
+}
+button.suggested-action:hover {
+    background-color: #89b4fa;
+    border-color: #89b4fa;
+    color: #11111b;
+}
+button.suggested-action:active {
+    background-color: #b4befe;
+    border-color: #b4befe;
+    color: #11111b;
+}
+button.destructive-action:hover {
+    background-color: #f38ba8;
+    border-color: #f38ba8;
+    color: #11111b;
+}
+button.destructive-action:active {
+    background-color: #eba0ac;
+    border-color: #eba0ac;
+    color: #11111b;
+}
+
+/* ---------- Notifications ---------- */
+infobar {
+    border-radius: 10px;
+}
+infobar.info {
+    background-color: #45475a;
+}
+infobar.error {
+    background-color: #f38ba8;
+}
+infobar.info label {
+    color: #cdd6f4;
+}
+infobar.error label {
+    color: #1e1e2e;
+}

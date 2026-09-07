@@ -1,0 +1,24 @@
+skip_selection = true
+
+[background]
+path = "/home/msi/.walls_catppuccin/serenity.jpg"
+fit = "Cover"
+
+[GTK]
+application_prefer_dark_theme = true
+font_name = "Noto Sans 14"
+icon_theme_name = "Colloid-Catppuccin-Dark"
+theme_name = "Colloid-Dark-Catppuccin"
+
+[appearance]
+greeting_msg = "Welcome back"
+
+[commands]
+reboot = ["systemctl", "reboot"]
+poweroff = ["systemctl", "poweroff"]
+
+[widget.clock]
+format = "%a %H:%M"
+resolution = "500ms"
+label_width = 100
+locale = "en_EN"

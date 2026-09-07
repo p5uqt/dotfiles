@@ -1,0 +1,84 @@
+diff --git a/src/gui/component.rs b/src/gui/component.rs
+index 708dcd9..4797daa 100644
+--- a/src/gui/component.rs
++++ b/src/gui/component.rs
+@@ -184,7 +184,7 @@ impl AsyncComponent for Greeter {
+                 #[template_child]
+                 session_label {
+                     #[track(model.updates.changed(Updates::input_mode()))]
+-                    set_visible: !model.updates.is_input(),
++                    set_visible: !model.config.skip_selection() && !model.updates.is_input(),
+                 },
+                 #[template_child]
+                 usernames_box {
+@@ -222,7 +222,9 @@ impl AsyncComponent for Greeter {
+                         model.updates.changed(Updates::manual_sess_mode())
+                         || model.updates.changed(Updates::input_mode())
+                     )]
+-                    set_visible: !model.updates.manual_sess_mode && !model.updates.is_input(),
++                    set_visible: !model.config.skip_selection()
++                        && !model.updates.manual_sess_mode
++                        && !model.updates.is_input(),
+                     #[track(model.updates.changed(Updates::active_session_id()))]
+                     set_active_id: model.updates.active_session_id.as_deref(),
+                 },
+@@ -232,7 +234,9 @@ impl AsyncComponent for Greeter {
+                         model.updates.changed(Updates::manual_sess_mode())
+                         || model.updates.changed(Updates::input_mode())
+                     )]
+-                    set_visible: model.updates.manual_sess_mode && !model.updates.is_input(),
++                    set_visible: !model.config.skip_selection()
++                        && model.updates.manual_sess_mode
++                        && !model.updates.is_input(),
+                 },
+                 #[template_child]
+                 input_label {
+@@ -302,7 +306,7 @@ impl AsyncComponent for Greeter {
+                 #[template_child]
+                 sess_toggle {
+                     #[track(model.updates.changed(Updates::input_mode()))]
+-                    set_visible: !model.updates.is_input(),
++                    set_visible: !model.config.skip_selection() && !model.updates.is_input(),
+                     connect_clicked => Self::Input::ToggleManualSess,
+                 },
+                 #[template_child]
+diff --git a/src/gui/model.rs b/src/gui/model.rs
+index c43d412..9502f83 100644
+--- a/src/gui/model.rs
++++ b/src/gui/model.rs
+@@ -322,15 +322,6 @@ impl Greeter {
+                 auth_message,
+                 auth_message_type,
+             } => {
+-                let auto_select_msg = if self.config.skip_selection() && !self.first_login_handled {
+-                    self.sess_info
+-                        .as_ref()
+-                        .and_then(|s| s.sess_id.as_ref())
+-                        .map(|s| format!("Auto-selecting session \"{s}\""))
+-                } else {
+-                    None
+-                };
+-
+                 match auth_message_type {
+                     AuthMessageType::Secret => {
+                         // Greetd has requested input that should be hidden
+@@ -340,9 +331,6 @@ impl Greeter {
+                         self.updates.set_input(String::new());
+                         self.updates
+                             .set_input_prompt(auth_message.trim_end().to_string());
+-                        if let Some(msg) = auto_select_msg {
+-                            self.display_info(sender, &msg, "Skipped user/session selection");
+-                        }
+                         return;
+                     }
+                     AuthMessageType::Visible => {
+@@ -352,9 +340,6 @@ impl Greeter {
+                         self.updates.set_input(String::new());
+                         self.updates
+                             .set_input_prompt(auth_message.trim_end().to_string());
+-                        if let Some(msg) = auto_select_msg {
+-                            self.display_info(sender, &msg, "Skipped user/session selection");
+-                        }
+                         return;
+                     }
+                     AuthMessageType::Info => {

@@ -49,6 +49,7 @@
   },
 
   "temperature": {
+  "thermal-zone": 2,
   "states": { "low": 40, "medium": 70, "high": 99 },
     "interval": 1,
     "format": "󰔏 {temperatureC}°C",
