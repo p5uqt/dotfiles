@@ -3,6 +3,7 @@
 -------------------
 
 hl.on("hyprland.start", function ()
+   hl.exec_cmd("elephant")
    hl.exec_cmd("waybar")
    hl.exec_cmd("swaync")
    hl.exec_cmd ("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
@@ -19,5 +20,4 @@ hl.on("hyprland.start", function ()
    hl.exec_cmd("batsignal -w 20 -c 15 -d 10 -I /usr/share/icons/Tela/24/panel/battery-010.svg")
    hl.exec_cmd = ("wl-paste --type text --watch cliphist store")
    hl.exec_cmd = ("wl-paste --type image --watch cliphist store")
-   hl.exec_cmd = ("walker --gapplication-service")
 end)
