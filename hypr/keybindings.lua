@@ -28,6 +28,7 @@ hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("~/.local/bin/displayoff"))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("python .torent-igruha.py -f --open"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("~/.local/bin/fsearch"))
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("firefox"))
+hl.bind("ALT" .. " + V", hl.dsp.exec_cmd("walker -mnN clipboard -t catppuccin-mocha"))
 
 hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
 hl.define_submap("resize", function()

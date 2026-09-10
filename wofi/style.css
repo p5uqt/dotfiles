@@ -4,7 +4,7 @@ window {
     border-radius: 14px;
     font-family: JetBrainsMono Nerd Font;
     font-size: 14.5px;
-    border: 1.8px solid rgba(77, 171, 238, 0.3);
+    border: 1.8px solid rgba(137, 180, 250, 0.3);
 }
 
 #input {
@@ -12,8 +12,8 @@ window {
     padding: 12px;
     border-radius: 12px;
     background-color: rgba(30, 30, 46, 0.85);
-    color: #f2f2f2;
-    border: 1.5px solid rgba(136, 192, 208, 0.22);
+    color: #cdd6f4;
+    border: 1.5px solid rgba(148, 226, 213, 0.22);
 }
 
 #inner-box {
@@ -23,12 +23,12 @@ window {
 #entry {
     padding: 13px;
     border-radius: 12px;
-    color: #e0e0e0;
+    color: #a6adc8;
 }
 
 #entry:selected {
-    background-color: rgba(136, 192, 208, 0.25);
-    color: #ffffff;
+    background-color: rgba(148, 226, 213, 0.2);
+    color: #cdd6f4;
 }
 
 #text {
