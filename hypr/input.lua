@@ -30,12 +30,12 @@ hl.gesture({
 hl.gesture({
     fingers = 4,
     direction = "down",
-    action = function() hl.exec_cmd("systemctl poweroff") end })
+    action = function() os.execute("systemctl poweroff") end })
 
 hl.gesture({
     fingers = 4,
     direction = "up",
-    action = function() hl.exec_cmd("systemctl reboot") end })
+    action = function() os.execute("systemctl reboot") end })
 
 
 -- Example per-device config
