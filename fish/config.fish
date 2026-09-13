@@ -7,7 +7,7 @@ alias cls clear
 alias lss "ls -a"
 alias hashcap hcxpcapngtool
 alias ls lsd
-alias gpu='env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
+alias gpu='env __NV_PRIME_RENDER_OFFLOAD=0 __GLX_VENDOR_LIBRARY_NAME=mesa'
 alias cd.. "cd .."
 alias v nvim
 alias drag 'ripdrag -s 40 -n'
