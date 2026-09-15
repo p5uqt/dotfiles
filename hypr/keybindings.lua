@@ -25,20 +25,8 @@ hl.bind("ALT" .. " + print", hl.dsp.exec_cmd("hyprshot -m window --clipboard-onl
 hl.bind("SHIFT" .. " + print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.local/bin/coolerboost"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("~/.local/bin/displayoff"))
-hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("python .torent-igruha.py -f --open"))
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("~/.local/bin/fsearch"))
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("firefox"))
 hl.bind("ALT" .. " + V", hl.dsp.exec_cmd("walker -mnN clipboard -t catppuccin-mocha"))
-
-hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
-hl.define_submap("resize", function()
-    hl.bind("right", hl.dsp.window.resize({ x = 10, y = 0, relative = true}), { repeating = true })
-    hl.bind("left", hl.dsp.window.resize({ x = -10, y = 0, relative = true}), { repeating = true })
-    hl.bind("up", hl.dsp.window.resize({ x = 0, y = 10, relative = true}), { repeating = true })
-    hl.bind("down", hl.dsp.window.resize({ x = 0, y = -10, relative = true}), { repeating = true })
-    hl.bind("escape", hl.dsp.submap("reset"))
-
-end)
 
 
 -- Move focus with mainMod + arrow keys
