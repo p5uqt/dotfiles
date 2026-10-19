@@ -26,7 +26,7 @@ hl.bind("SHIFT" .. " + print", hl.dsp.exec_cmd("hyprshot -m region --clipboard-o
 hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd("~/.local/bin/coolerboost"))
 hl.bind(mainMod .. " + F2", hl.dsp.exec_cmd("~/.local/bin/displayoff"))
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd("firefox"))
-hl.bind("ALT" .. " + V", hl.dsp.exec_cmd("walker -mnN clipboard -t catppuccin-mocha"))
+hl.bind("ALT" .. " + V", hl.dsp.exec_cmd("GSK_RENDERER=gl walker -mnN clipboard -t catppuccin-mocha"))
 
 
 -- Move focus with mainMod + arrow keys
