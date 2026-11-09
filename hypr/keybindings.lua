@@ -2,7 +2,6 @@
 ---- KEYBINDINGS ----
 ---------------------
 
--- alt и win поменяны местами!!!
 local mainMod = "ALT"
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
