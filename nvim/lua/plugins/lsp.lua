@@ -11,6 +11,23 @@ return {
       })
 
       vim.lsp.config("basedpyright", {
+        -- .venv / venv в корне проекта → его python, иначе pyright смотрит в системный
+        -- и не видит библиотеки (reportMissingImports)
+        before_init = function(_, config)
+          local root = config.root_dir
+          if not root then
+            return
+          end
+          for _, name in ipairs({ ".venv", "venv" }) do
+            local py = root .. "/" .. name .. "/bin/python"
+            if vim.uv.fs_stat(py) then
+              -- менять на месте: клиент уже держит ссылку на эту таблицу
+              config.settings.python = config.settings.python or {}
+              config.settings.python.pythonPath = py
+              return
+            end
+          end
+        end,
         settings = {
           basedpyright = {
             -- ruff сам сортирует импорты
